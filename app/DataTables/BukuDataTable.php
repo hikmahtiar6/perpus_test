@@ -3,12 +3,9 @@
 namespace App\DataTables;
 
 use App\Model\BukuModel;
-use App\Model\PenciptaModel;
 use Illuminate\Support\Facades\Auth;
 use Yajra\DataTables\Html\Button;
 use Yajra\DataTables\Html\Column;
-use Yajra\DataTables\Html\Editor\Editor;
-use Yajra\DataTables\Html\Editor\Fields;
 use Yajra\DataTables\Services\DataTable;
 
 class BukuDataTable extends DataTable
@@ -21,8 +18,10 @@ class BukuDataTable extends DataTable
      */
     public function dataTable($query)
     {
+        $bm = new BukuModel();
         // return datatable with customize
-        return datatables()->of(BukuModel::query())
+        return datatables()
+        ->of($this->query($bm))
         ->addIndexColumn()
         ->editColumn('buku_judul', function(BukuModel $pm) {
             $role = Auth::User()->level;        
@@ -34,8 +33,8 @@ class BukuDataTable extends DataTable
             {
                 return $pm->buku_judul;
             }
-        })->editColumn('pencipta_id', function(BukuModel $pm) {
-            return PenciptaModel::find($pm->pencipta_id)->pencipta_nama;
+        })->editColumn('pencipta_id', function($pm) {
+            return $pm->pencipta->pencipta_nama;
         })->editColumn('buku_id', 'buku.dtdelete')
         ->rawColumns([ 'buku_judul','buku_id']);
     }
