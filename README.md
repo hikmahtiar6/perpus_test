@@ -5,27 +5,27 @@
 
 #### RUN CLI 
 
-git clone https://github.com/hikmahtiar6/perpus_test.git test
->
-cd test
+`git clone https://github.com/hikmahtiar6/perpus_test.git test`
 
-copy file example.env menjadi .env
+`cd test`
 
-php artisan key:generate
+`copy file example.env menjadi .env`
+
+`php artisan key:generate`
 
 create database di webserver mu (contoh laravel nama db nya dan harus sesuai config)
 
-composer update
+`composer update`
 
-php artisan migrate
+`php artisan migrate`
 
-php artisan db:seed
+`php artisan db:seed`
 
-npm install && npm run dev
+`npm install && npm run dev`
 
-yarn prod
+`yarn prod`
 
-php artisan serve
+`php artisan serve`
 
 Buka browser http://localhost:8000
 
