@@ -6,7 +6,7 @@
 #### RUN CLI 
 
 git clone https://github.com/hikmahtiar6/perpus_test.git test
-
+>
 cd test
 
 copy file example.env menjadi .env
